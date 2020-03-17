@@ -6,6 +6,10 @@
         <input type="text" v-model.lazy="item.name" required/>
         <label>Item Category</label>
         <input type="text" v-model.lazy="item.category"/>
+        <label>Date Bought</label>
+        <input type="text" v-model.lazy="item.bought"/>
+        <label>Expiry Date</label>
+        <input type="text" v-model.lazy="item.expiry"/>
         <button v-on:click.prevent="addItem">Add Item</button>
         
     </form>
@@ -22,7 +26,9 @@ export default {
         msg:"Add Item",
         item:{
           name:'',
-          category:''
+          category:'',
+          bought:'',
+          expiry:''
         },
         
         
@@ -34,6 +40,7 @@ export default {
           database.collection('items').doc().set(this.item);
           this.item.name="";
           this.item.category="";
+          this.item.expiry="";
           alert("I am in the DB .... :-) Item saved successfully")
           
         }
